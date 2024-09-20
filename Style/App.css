@@ -7,7 +7,7 @@
   
 .btn {
     margin-left: 10px;
-    background-color: #007bff;
+    background-color: #73ABFF;
     color: white;
     border: none;
     height:45px;
@@ -17,3 +17,20 @@
     font-size: 16px;
     font-weight: bold;
   }
+  .popup-close-icon{
+    position: absolute;
+    top:20px;
+    color:red;
+    border-radius: 100%;
+    border:2px solid red;
+text-align: center; 
+padding: 4px;
+right:20px;
+   font-size:16px;
+    font-weight: bold;
+    width:30px;
+    height:30px;
+    background-color: white;
+    cursor: pointer;
+  }
+  
