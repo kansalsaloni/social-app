@@ -4,7 +4,7 @@ import '../Style/App.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 
-function Header({ isAuthenticated, userName, avatarUrl }) {
+function Header({ isAuthenticated,toggleRegisterPopup,isRegisterPopupOpen,isLoginPopupOpen,toggleLoginPopup, userName, avatarUrl }) {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -25,12 +25,13 @@ function Header({ isAuthenticated, userName, avatarUrl }) {
       };
 
   return (
+    <>
     <header className="header">     
       <div className="header-right">
         {!isAuthenticated ? (
           <>
-            <button className="btn signup-btn">Register Now</button>
-            <button className="btn signin-btn">Sign In</button>
+            <button className="btn signup-btn" onClick={()=>toggleRegisterPopup()} disabled={isRegisterPopupOpen}  style={{ pointerEvents: isRegisterPopupOpen ? 'none' : 'auto' }}>Register Now</button>
+            <button className="btn signin-btn" onClick={()=>toggleLoginPopup()} disabled={isLoginPopupOpen}  style={{ pointerEvents: isLoginPopupOpen ? 'none' : 'auto' }}>Sign In</button>
             <div className="mobile-hamburger" onClick={toggleMobileMenu}  disabled={isMobileMenuOpen}  style={{ pointerEvents: isMobileMenuOpen ? 'none' : 'auto' }}>
               &#9776;
             </div>
@@ -40,8 +41,8 @@ function Header({ isAuthenticated, userName, avatarUrl }) {
                 <p  onClick={toggleMobileMenu}>X</p>
                 </div>
                 <div className="mobile-dropdown-menu-buttons">
-            <button className="btn" >Login</button>
-              <button className="btn" >Register</button>
+            <button className="btn" onClick={()=>toggleLoginPopup()} disabled={isLoginPopupOpen}  style={{ pointerEvents: isLoginPopupOpen ? 'none' : 'auto' }}>Login</button>
+              <button className="btn" onClick={()=>toggleRegisterPopup()} disabled={isRegisterPopupOpen}  style={{ pointerEvents: isLoginPopupOpen ? 'none' : 'auto' }}>Register</button>
               </div>
               
               </div>
@@ -89,8 +90,8 @@ function Header({ isAuthenticated, userName, avatarUrl }) {
           </>
         )}
       </div>
-
     </header>
+        </>
   )
 }
 
